@@ -1,0 +1,28 @@
+.arrow {
+    position: absolute;
+    transform: translate(0px, 0px);
+    width: 0.25vw;
+    height: 40vh;
+    background: #fff;
+    margin-top: -65vh;
+    margin-left: 5vmin;
+}
+
+.arrow::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #fff;
+    bottom: -0.5vmin;
+    left: -0.7vmin;
+}
+
+    @media (max-aspect-ratio: 9/16) {
+        .arrow {
+            display: none;
+        }
+    }
