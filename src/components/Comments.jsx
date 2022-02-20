@@ -24,43 +24,125 @@ const MainContainer = styled.div`
     background-attachment: fixed;
     background-position: center;
     width: 100vw;
+
+    @media screen and (max-width: 500px) {
+        background-attachment: fixed;
+        background-size: cover;
+    }
+`
+
+const CommentTitle = styled.h1`
+    position: fixed;
+    top: 1rem;
+    left: 5rem;
+    font-size: 6rem;
+    opacity: 0.3;
+
+    >span {
+        font-size: 12.5rem;
+    }
+
+    @media screen and (max-width: 500px) {
+        top: 5rem;
+        left: 4rem;
+        font-size: 2rem;
+        opacity: 0.3;
+
+        >span {
+            font-size: 4rem;
+        }
+    }
 `
 
 const Container = styled.div`
     background-color: ${props => `rgba(${props.theme.bodyRgba},0.8)`};
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     position: relative;
     padding-bottom: 5rem;
 `
 
 const Center = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 10rem;
 `
 
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, minmax(calc(10rem + 15vw), 1fr));
-    grid-gap: calc(1rem + 2vw);
-`
+const Form = styled.div`
+    display: flex;
+    flex-direction: column;
 
-// Framer-motion config
-const container = {
-
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-
-        transition: {
-            staggerChildren: 0.5,
-            duration: 0.5,
-        }
+    >h1 {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+    }
+    
+    >form>input {
+        width: 85%;
+        padding: 1rem;
     }
 
-}
+    >form>button {
+        background-color: transparent;
+        padding: 1rem 1rem;
+        border: 1px solid #000;
+        border-radius: 15px;
+        outline: none;
+        cursor: pointer;
+        font-size: 1.05rem;
+        font-weight: 550;
+        transition: all 0.25s forwards;
+    }
+
+    &:hover>form>button {
+        transform: scale(1.025);
+    }
+
+    @media screen and (max-width: 500px) {
+        >h1 {
+            font-size: 1.25rem;
+        }
+        >form>input {
+            width: 85%;
+            padding: 1rem;
+        }
+    }
+`
+
+const Flex = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 50%;
+    left: 50%;
+    transform: translate(6%, 0);
+
+    >div {
+        background-color: transparent;
+        border: 2px solid #000;
+        width: 25rem;
+        height: 50vh;
+        transition: all 0.25s forwards;
+        cursor: pointer;
+    }
+
+    >div>li {
+        list-style: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        transform: translate(2%, 0);
+        max-width: 70%;
+
+        >div {
+            height: 30vh;
+        }
+    }
+`
 
 
 const baseURL = 'https://isaac-comments-api.herokuapp.com/api/v1/comments';
@@ -90,17 +172,17 @@ const Comments = () => {
             })
     }, []);
 
-    const handleDelete = (e, id) => {
-        setName('');
-        setTitle('');
-        setFeedback('');
-        e.preventDefault();
-        console.log(e)
-        const deleteURL = baseURL + `/${id}`;
-        return axios.delete(
-            deleteURL, { id: id }
-        )
-    }
+    // const handleDelete = (e, id) => {
+    //     setName('');
+    //     setTitle('');
+    //     setFeedback('');
+    //     e.preventDefault();
+    //     console.log(e)
+    //     const deleteURL = baseURL + `/${id}`;
+    //     return axios.delete(
+    //         deleteURL, { id: id }
+    //     )
+    // }
 
     const handleAdd = (e, id) => {
         e.preventDefault();
@@ -114,33 +196,32 @@ const Comments = () => {
         )
     }
 
-    const handleEdit = (id) => {
-        axios.get(`${baseURL}/${id}`)
-            .then(res => {
-                setName(res.data.data.attributes.name)
-                setTitle(res.data.data.attributes.title)
-                setFeedback(res.data.data.attributes.feedback)
-                setId(id)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        console.log(id)
-        setStatus('Update Comment');
-    }
+    // const handleEdit = (id) => {
+    //     axios.get(`${baseURL}/${id}`)
+    //         .then(res => {
+    //             setName(res.data.data.attributes.name)
+    //             setTitle(res.data.data.attributes.title)
+    //             setFeedback(res.data.data.attributes.feedback)
+    //             setId(id)
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    //     console.log(id)
+    //     setStatus('Update Comment');
+    // }
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        const editURL = baseURL + `/${id}`;
-        return axios.put(
-            editURL,
-            { name: name, title: title, feedback: feedback }
-        )
-    }
+    // const handleUpdate = (e) => {
+    //     e.preventDefault();
+    //     const editURL = baseURL + `/${id}`;
+    //     return axios.put(
+    //         editURL,
+    //         { name: name, title: title, feedback: feedback }
+    //     )
+    // }
 
     return (
         <MainContainer
-            variants={container}
             initial='hidden'
             animate='show'
             exit={{
@@ -151,11 +232,12 @@ const Comments = () => {
                 <LogoComp />
                 <HomeButton />
                 <SocialIcons />
+                <CommentTitle>
+                    <span>S</span>ee Comments
+                </CommentTitle>
                 <Center>
-                    <div>
-                        <h1>See Comments</h1>
-                        <br /><br />
-                        <h3>Create Comment</h3>
+                    <Form>
+                        <h1>Give me your Feedback</h1>
                         <br /><br />
                         <form>
                             <input type="hidden" name="" value={id} />
@@ -168,9 +250,7 @@ const Comments = () => {
                                     Add Comment
                                 </button>
                             ) : (
-                                <button onClick={(e) => handleUpdate(e)}>
-                                    Update Comment
-                                </button>
+                                null
                             )}
 
                         </form>
@@ -178,19 +258,17 @@ const Comments = () => {
 
                         <br />
                         <br /><br />
-                    </div>
+                    </Form>
 
-                    <Grid>
+                    <Flex>
                         {
                             getComments.map((value, index) => (
-                                <>
+                                <motion.div
+                                    whileHover={{ color: '#fff', backgroundColor: '#000' }}
+                                >
                                     <li key={index}
                                         id={value.id}
                                     >
-                                        <p>
-                                            ID: &nbsp;
-                                            <strong>{value.id}</strong><br />
-                                        </p>
                                         <p>
                                             Name: &nbsp;
                                             <strong>{value.attributes.name}</strong>
@@ -203,16 +281,15 @@ const Comments = () => {
                                             Feedback: &nbsp;
                                             <strong>{value.attributes.feedback}</strong>
                                         </p>
-                                        <button status={'Delete'} onClick={(e) => handleDelete(e, value.id)}>Delete Comment</button>
+                                        {/* <button status={'Delete'} onClick={(e) => handleDelete(e, value.id)}>Delete Comment</button> */}
                                         {" "}
-                                        <button onClick={() => handleEdit(value.id)}>Edit Comment</button>
+                                        {/* <button onClick={() => handleEdit(value.id)}>Edit Comment</button> */}
                                     </li>
                                     <br />
-
-                                </>
+                                </motion.div>
                             ))
                         }
-                    </Grid>
+                    </Flex>
 
                 </Center>
             </Container>
