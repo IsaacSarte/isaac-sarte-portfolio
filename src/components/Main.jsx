@@ -147,13 +147,15 @@ const Center = styled.button`
         padding-top: 1rem;
         font-size: 1.25rem;
         font-weight: 550;
+        white-space: nowrap;
     }
 
     @media screen and (max-width: 500px) {
         top: ${props => props.click ? '87.5%' : '50%'};
         left: ${props => props.click ? '85%' : '50%'};
-        width: 75px;
-        height: 75px;
+        /* width: 90px;
+        height: 90px; */
+
         &>:last-child {
         padding-top: 0rem;
         font-size: 1rem;
