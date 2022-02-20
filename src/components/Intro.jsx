@@ -71,11 +71,17 @@ const SubBox = styled.div`
         filter: drop-shadow(0px 10px 3px black); 
     }
 
+    @media screen and (max-width: 768px) {
+        .img {
+            bottom: 10px;
+            height: 40vh;
+        }
+    }
+
     @media screen and (max-width: 500px) {
         display: flex;
         flex-direction: column;
         .img {
-            filter: drop-shadow(0px 10px 3px black); 
             bottom: 7.5px;
             height: 30vh;
             padding-right: 1rem;
@@ -84,7 +90,6 @@ const SubBox = styled.div`
 `
 
 const Text = styled.div`
-    font-size: calc(1em + 1.5vw);
     color: ${props => props.theme.body};
     padding: 2rem;
     cursor: pointer;
@@ -93,8 +98,12 @@ const Text = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
 
-    h3 {
+    h1 {
         font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 3rem;
     }
 
     &>*:last-child {
@@ -107,6 +116,9 @@ const Text = styled.div`
         padding: 1rem;
         gap: 1rem;
         margin-top: 1rem;
+        h1 {
+            font-size: 2.5rem;
+        }
         h3 {
             font-size: 1.5rem;
             white-space: nowrap;
