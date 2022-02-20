@@ -40,14 +40,14 @@ const Box = styled(motion.div)`
         height: 60vh !important;
         background: none;
         border: none;
-        border-top: 2px solid ${(props) => props.theme.body};
+        border-top: 2px solid #421ceb;
         border-bottom: 2px solid ${(props) => props.theme.text};
         background-image: linear-gradient(
-            ${(props) => props.theme.body} 50%,
+            #624bc9 50%,
             ${(props) => props.theme.text} 50%
         ),
         linear-gradient(
-            ${(props) => props.theme.body} 50%,
+            #3460db 50%,
             ${(props) => props.theme.text} 50%
         );
         background-size: 2px 100%;
