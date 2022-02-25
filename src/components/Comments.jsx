@@ -179,6 +179,22 @@ const Flex = styled.div`
         }
     }
 
+    @media screen and (max-width: 820px) {
+        >div {
+            &:before {
+                margin-top: 18rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        >div {
+            &:before {
+                margin-top: 16rem;
+            }
+        }
+    }
+
     @media screen and (max-width: 500px) {
         transform: translate(2%, 0);
         max-width: 70%;
@@ -201,22 +217,32 @@ const Flex = styled.div`
         }
     }
 
-    @media screen and (min-height: 844px) {
+    @media screen and (max-width: 414px) {
         >div {
 
             &:before {
-                margin-top: 14.5rem;
+                margin-top: 15rem;
+                margin-left: 16rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 393px) {
+        >div {
+
+            &:before {
+                margin-top: 14rem;
                 margin-left: 15rem;
             }
         }
     }
 
-    @media screen and (min-height: 914px) {
+    @media screen and (max-width: 360px) {
         >div {
 
             &:before {
-                margin-top: 15rem;
-                margin-left: 15.5rem;
+                margin-top: 12.5rem;
+                margin-left: 14rem;
             }
         }
     }
