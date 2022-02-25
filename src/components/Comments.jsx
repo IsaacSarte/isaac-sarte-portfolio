@@ -200,6 +200,15 @@ const Flex = styled.div`
             }
         }
     }
+
+    @media screen and (min-height: 844px) {
+        >div {
+
+            &:before {
+                margin-top: 14.5rem;
+            }
+        }
+    }
 `
 
 const Details = styled.div`
