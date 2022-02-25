@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Style Components
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
 // Framer Motion
 import { motion } from 'framer-motion'

@@ -15,7 +15,6 @@ import { motion } from 'framer-motion';
 // Components
 import LogoComp from '../subComponents/LogoComp';
 import HomeButton from '../subComponents/HomeButton';
-import SocialIcons from '../subComponents/SocialIcons';
 
 const MainContainer = styled.div`
     background-image: url(${books});
@@ -116,22 +115,68 @@ const Form = styled.div`
 const Flex = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 7.5rem;
     max-width: 50%;
-    left: 50%;
-    transform: translate(6%, 0);
+    /* left: 50%;
+    transform: translate(-100%, 0); */
+    position: relative;
 
     >div {
         background-color: transparent;
-        border: 2px solid #000;
+        border: 5px solid #000;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 15px;
         width: 25rem;
-        height: 50vh;
+        height: 25vh;
         transition: all 0.25s forwards;
         cursor: pointer;
+        /* position: absolute; */
+            &:before,&:after {
+                position: absolute;
+            }
+
+            &:before {
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+	            content: "\f10d";
+                color: #000;
+                font-size: 2.5rem;
+                margin-top: 15rem;
+                margin-left: 26rem;
+                transform: rotate(180deg);
+            }
+
+            &:after {
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900;
+                content: '\f10d';
+                color: #000;
+                font-size: 2.5rem;
+                margin-top: -9rem;
+                margin-left: -3.5rem;
+            }
+        
     }
 
     >div>li {
         list-style: none;
+        padding: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        >div {
+
+            &:before {
+                margin-top: 16.5rem;
+                margin-left: 24rem;
+                transform: rotate(180deg);
+            }
+
+            &:after {
+                right: 100%;
+                margin-top: -10rem;
+            }
+        }
     }
 
     @media screen and (max-width: 500px) {
@@ -139,9 +184,26 @@ const Flex = styled.div`
         max-width: 70%;
 
         >div {
-            height: 30vh;
+            height: 25vh;
+
+            &:before {
+                font-size: 2rem;
+                margin-top: 12rem;
+                margin-left: 14.5rem;
+                transform: rotate(180deg);
+            }
+
+            &:after {
+                font-size: 2rem;
+                right: 92.5%;
+                margin-top: -10rem;
+            }
         }
     }
+`
+
+const Details = styled.div`
+
 `
 
 
@@ -159,7 +221,7 @@ const Comments = () => {
 
     // Edit State
     const [status, setStatus] = useState('Add Comment');
-    const [id, setId] = useState(0);
+    // const [id, setId] = useState(0);
 
     useEffect(() => {
         axios.get(baseURL)
@@ -184,7 +246,7 @@ const Comments = () => {
     //     )
     // }
 
-    const handleAdd = (e, id) => {
+    const handleAdd = (e) => {
         e.preventDefault();
         const addURL = baseURL;
 
@@ -231,7 +293,6 @@ const Comments = () => {
             <Container>
                 <LogoComp />
                 <HomeButton />
-                <SocialIcons />
                 <CommentTitle>
                     <span>S</span>ee Comments
                 </CommentTitle>
@@ -240,7 +301,7 @@ const Comments = () => {
                         <h1>Give me your Feedback</h1>
                         <br /><br />
                         <form>
-                            <input type="hidden" name="" value={id} />
+                            {/* <input type="hidden" name="" value={id} /> */}
                             <input type="text" name="" id="" required placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} /><br /><br />
                             <input type="text" name="" id="" required placeholder="Title " value={title} onChange={(e) => setTitle(e.target.value)} /><br /><br />
                             <input type="text" name="" id="" required placeholder="Feedback " value={feedback} onChange={(e) => setFeedback(e.target.value)} />
@@ -269,18 +330,22 @@ const Comments = () => {
                                     <li key={index}
                                         id={value.id}
                                     >
-                                        <p>
-                                            Name: &nbsp;
-                                            <strong>{value.attributes.name}</strong>
-                                        </p>
-                                        <p>
-                                            Title: &nbsp;
-                                            <strong>{value.attributes.title}</strong>
-                                        </p>
-                                        <p>
-                                            Feedback: &nbsp;
-                                            <strong>{value.attributes.feedback}</strong>
-                                        </p>
+                                        <Details>
+                                            <div>
+                                                <p>
+                                                    Name: &nbsp;
+                                                    <strong>{value.attributes.name}</strong>
+                                                </p>
+                                                <p>
+                                                    Title: &nbsp;
+                                                    <strong>{value.attributes.title}</strong>
+                                                </p>
+                                                <p>
+                                                    Feedback: &nbsp;
+                                                    <strong>{value.attributes.feedback}</strong>
+                                                </p>
+                                            </div>
+                                        </Details>
                                         {/* <button status={'Delete'} onClick={(e) => handleDelete(e, value.id)}>Delete Comment</button> */}
                                         {" "}
                                         {/* <button onClick={() => handleEdit(value.id)}>Edit Comment</button> */}

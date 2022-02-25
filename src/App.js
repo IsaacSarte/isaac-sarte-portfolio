@@ -1,4 +1,5 @@
 import React from 'react';
+import MouseTrail from "@pjsalita/react-mouse-trail";
 
 // Style Components
 import { ThemeProvider } from 'styled-components';
@@ -22,12 +23,21 @@ const App = () => {
 
   const location = useLocation();
 
+  const config = {
+    color: "#b81e1e",
+    idleAnimation: true,
+    idleAnimationCount: 10,
+    inverted: true,
+    size: 15,
+    trailCount: 20,
+  }
+
   return (
     <>
       <GlobalStyle />
 
       <ThemeProvider theme={lightTheme}>
-
+      <MouseTrail {...config} />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
             <Route exact path="/" component={Main}/>
