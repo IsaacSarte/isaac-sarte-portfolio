@@ -206,6 +206,17 @@ const Flex = styled.div`
 
             &:before {
                 margin-top: 14.5rem;
+                margin-left: 15rem;
+            }
+        }
+    }
+
+    @media screen and (min-height: 914px) {
+        >div {
+
+            &:before {
+                margin-top: 15rem;
+                margin-left: 15.5rem;
             }
         }
     }
