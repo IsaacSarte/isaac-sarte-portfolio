@@ -115,7 +115,7 @@ const Form = styled.div`
 const Flex = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 7.5rem;
+    gap: 7rem;
     max-width: 50%;
     /* left: 50%;
     transform: translate(-100%, 0); */
