@@ -16,6 +16,9 @@ import Comments from './components/Comments.jsx';
 import Projects from './components/Projects.jsx';
 import Skills from './components/Skills.jsx';
 
+import Games from './components/Games';
+import Music from './components/Music';
+
 // Framer Motion
 import { AnimatePresence } from 'framer-motion';
 
@@ -45,6 +48,8 @@ const App = () => {
             <Route exact path="/comments" component={Comments}/>
             <Route exact path="/projects" component={Projects}/>
             <Route exact path="/skills" component={Skills}/>
+            <Route exact path="/about-games" component={Games}/>
+            <Route exact path="/about-music" component={Music}/>
         </Switch>
       </AnimatePresence>
 

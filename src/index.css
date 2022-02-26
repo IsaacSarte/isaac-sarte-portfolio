@@ -1,6 +1,7 @@
 /* svg animation */
 
-.binocular {
+.binocular,
+.arrow {
     transition: 0.25s ease-in forwards;
     animation: fill 0.5s ease-in-out forwards 0.5s;
 }
@@ -15,7 +16,8 @@
     }
 }
 
-.binocular path:nth-child(1) {
+.binocular path:nth-child(1),
+.arrow path:nth-child(1) {
     stroke-dasharray: 500;
     stroke-dashoffset: 500;
     animation: line-animation 2s ease-in-out forwards infinite;
@@ -27,7 +29,8 @@
     }
 }
 
-.binocular:hover {
+.binocular:hover,
+.arrow:hover {
     transform: scale(1.05);
 }
 
