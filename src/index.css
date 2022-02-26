@@ -47,3 +47,24 @@
     stroke-dashoffset: 500;
     animation: line-animation 2s ease-in-out forwards infinite;
 }
+
+.custom-shape-divider-bottom-1645847845 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1645847845 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
+.custom-shape-divider-bottom-1645847845 .shape-fill {
+    fill: #2a102b;
+}
