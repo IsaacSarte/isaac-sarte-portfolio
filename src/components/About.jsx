@@ -77,7 +77,7 @@ const About = () => {
     console.log(handleClick);
 
     const moveX = {
-        x: `${path === "games" ? "-100%" : null}`,
+        x: `${path === "about-music" ? "-100%" : null}`,
     };
 
     return (
@@ -88,7 +88,7 @@ const About = () => {
                     initial={{ opacity: 0 }
                     }
                     animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                    exit={path === 'games' ? moveX : null}
+                    exit={path === 'about-music' ? moveX : null}
                     transition={{ duration: 0.5 }}
                 >
                     <LogoComp theme='dark' />
@@ -99,9 +99,9 @@ const About = () => {
                     </CommentTitle>
 
                     <NavLink
-                        to="/about-games"
+                        to="/about-music"
                         click={click}
-                        onClick={() => setPath("games")}
+                        onClick={() => setPath("about-music")}
                     >
                         <RightArrow />
                     </NavLink>

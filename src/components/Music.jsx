@@ -42,7 +42,7 @@ const Music = () => {
     console.log(handleClick);
 
     const moveNegX = {
-        x: `${path === "about-games" ? "100%" : null}`,
+        x: `${path === "about" ? "100%" : null}`,
     }
 
     return (
@@ -52,16 +52,16 @@ const Music = () => {
                     initial={{ opacity: 0 }
                     }
                     animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                    exit={path === 'about-games' ? moveNegX : null}
+                    exit={path === 'about' ? moveNegX : null}
                     transition={{ duration: 0.5 }}
                 >
                     <LogoComp theme='dark' />
                     <HomeButton />
 
                     <NavLink
-                        to="/about-games"
+                        to="/about"
                         click={click}
-                        onClick={() => setPath("about-games")}
+                        onClick={() => setPath("about")}
                     >
                         <LeftArrow />
                     </NavLink>
