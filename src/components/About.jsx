@@ -37,10 +37,27 @@ const MainContainer = styled(motion.div)`
       height: 250px;
   }
 
+  >span {
+      color: #fff;
+      position: fixed;
+      bottom: 25vh;
+      margin-bottom: auto;
+      text-align: center;
+      left: 50%;
+      transform: translate(-50%, 0);
+      font-size: 2rem;
+      font-style: italic;
+  }
+
   @media screen and (max-width: 500px) {
     canvas {
-      overflow: hidden;
-      margin-top: -5vh;
+        overflow: hidden;
+        margin-top: -5vh;
+    }
+
+    >span {
+        font-size: 1.15rem;
+        bottom: 30vh;
     }
   }
 `
@@ -111,6 +128,16 @@ const About = () => {
                     </NavLink>
 
                     <ParticlesComponent theme='dark' />
+
+                    <motion.span
+                        initial={{ opacity: 0, bottom: '15vh' }}
+                        animate={{ opacity: 1, bottom: '20vh' }}
+                        transition={{ type: 'spring', duration: 1.25, delay: 1 }}
+                    >
+                        "I like to create well defined solutions <br />
+                        for every well defined specific problems using my knowledge in the <br />
+                        Web Development Industry."
+                    </motion.span>
 
                     <Canvas>
                         <OrbitControls enableZoom={false} />
