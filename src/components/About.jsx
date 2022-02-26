@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { NavLink } from "react-router-dom";
 
 import { Canvas } from "@react-three/fiber";
@@ -17,10 +17,11 @@ import ParticlesComponent from '../subComponents/ParticlesComponent';
 import LogoComp from '../subComponents/LogoComp';
 import HomeButton from '../subComponents/HomeButton';
 
-import Macbook from '../subComponents/Macbook';
+import RightArrow from '../subComponents/RightArrow';
+
 import Plane from '../subComponents/Plane';
 
-import RightArrow from '../subComponents/RightArrow';
+const Macbook = lazy(() => import('../subComponents/Macbook'));
 
 const MainContainer = styled(motion.div)`
   background-color: #030303;
@@ -111,7 +112,7 @@ const About = () => {
                         <OrbitControls enableZoom={false} />
                         <ambientLight intensity={5} />
                         <directionalLight position={[-5, 15, 5, 5, -5]} intensity={1} />
-                        <Macbook className="macbook" scale={6.75} />
+                        <Macbook className="macbook" scale={6} />
                     </Canvas>
 
                     <Plane />

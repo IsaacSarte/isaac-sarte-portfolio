@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { NavLink } from "react-router-dom";
 
 import { Canvas } from "@react-three/fiber";
@@ -16,11 +16,12 @@ import ParticlesComponent from '../subComponents/ParticlesComponent';
 import LogoComp from '../subComponents/LogoComp';
 import HomeButton from '../subComponents/HomeButton';
 
-import Pc from '../subComponents/Pc';
-import Plane from '../subComponents/Plane';
-
 import RightArrow from '../subComponents/RightArrow';
 import LeftArrow from '../subComponents/LeftArrow';
+
+import Plane from '../subComponents/Plane';
+
+const Pc = lazy(() => import('../subComponents/Pc'));
 
 const MainContainer = styled(motion.div)`
   background-color: #030303;
@@ -84,7 +85,7 @@ const Games = () => {
                         <OrbitControls enableZoom={false} />
                         <ambientLight intensity={2} />
                         <directionalLight position={[-2, 5, 2]} intensity={1} />
-                        <Pc className="pc" scale={0.30} />
+                        <Pc className="pc" scale={0.25} />
                     </Canvas>
 
                     <Plane />

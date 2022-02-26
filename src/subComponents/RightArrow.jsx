@@ -17,7 +17,7 @@ const RightNav = styled.div`
         >svg {
             width: 50px;
             height: 50px;
-            margin-right: 2rem;
+            margin-right: 1rem;
         }
     }
 `

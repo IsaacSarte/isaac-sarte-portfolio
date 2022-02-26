@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { NavLink } from "react-router-dom";
 
 import { Canvas } from "@react-three/fiber";
@@ -16,10 +16,11 @@ import ParticlesComponent from '../subComponents/ParticlesComponent';
 import LogoComp from '../subComponents/LogoComp';
 import HomeButton from '../subComponents/HomeButton';
 
-import Midi from '../subComponents/Midi';
+import LeftArrow from '../subComponents/LeftArrow';
+
 import Plane from '../subComponents/Plane';
 
-import LeftArrow from '../subComponents/LeftArrow';
+const Midi = lazy(() => import('../subComponents/Midi'));
 
 const MainContainer = styled(motion.div)`
   background-color: #030303;
@@ -71,7 +72,7 @@ const Music = () => {
                         <OrbitControls enableZoom={false} />
                         <ambientLight intensity={2} />
                         <directionalLight position={[-2, 5, 2]} intensity={1} />
-                        <Midi scale={0.9} />
+                        <Midi scale={0.75} />
                     </Canvas>
 
                     <Plane />
