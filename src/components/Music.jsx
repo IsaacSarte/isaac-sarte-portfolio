@@ -73,6 +73,11 @@ const CommentTitle = styled.h1`
         font-size: 12.5rem;
     }
 
+    >p {
+      color: #fff;
+      font-size: 1rem;
+    }
+
     @media screen and (max-width: 500px) {
         top: 5.5rem;
         left: 4rem;
@@ -115,6 +120,7 @@ const Music = () => {
 
                     <CommentTitle>
                         <span>A</span>bout Me
+                        <p>hold midi keyboard to rotate</p>
                     </CommentTitle>
 
                     <NavLink
