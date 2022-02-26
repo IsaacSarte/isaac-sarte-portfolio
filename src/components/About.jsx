@@ -13,6 +13,7 @@ import { darkTheme } from './Themes';
 import { motion } from 'framer-motion';
 
 // Components
+import Loading from "../subComponents/Loading";
 import ParticlesComponent from '../subComponents/ParticlesComponent';
 import LogoComp from '../subComponents/LogoComp';
 import HomeButton from '../subComponents/HomeButton';
@@ -37,14 +38,17 @@ const MainContainer = styled(motion.div)`
   }
 
   @media screen and (max-width: 500px) {
-
+    canvas {
+      overflow: hidden;
+      margin-top: -5vh;
+    }
   }
 `
 
 const CommentTitle = styled.h1`
     position: fixed;
-    top: 1rem;
-    left: 5rem;
+    top: 5rem;
+    left: 7rem;
     font-size: 6rem;
     opacity: 0.7;
     color: #fff;
@@ -54,7 +58,7 @@ const CommentTitle = styled.h1`
     }
 
     @media screen and (max-width: 500px) {
-        top: 5rem;
+        top: 5.5rem;
         left: 4rem;
         font-size: 2rem;
         opacity: 0.7;
@@ -81,7 +85,7 @@ const About = () => {
     };
 
     return (
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loading />}>
             <ThemeProvider theme={darkTheme}>
                 <MainContainer
                     key='skills'
