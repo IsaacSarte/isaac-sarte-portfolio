@@ -132,7 +132,7 @@ const Music = () => {
                         animate={{ opacity: 1, bottom: '20vh' }}
                         transition={{ type: 'spring', duration: 1.25, delay: 1 }}
                     >
-                        "I like to creating music as well, <br />
+                        "I like creating music as well, <br />
                         I enjoy playing piano, guitar, especially in <br />
                         making chill beats or lo-fi."
                     </motion.span>
