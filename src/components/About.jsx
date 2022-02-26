@@ -5,9 +5,9 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from '@react-three/drei';
 
 // Style Components
+import '../index.css';
 import styled, { ThemeProvider } from 'styled-components';
 import { darkTheme } from './Themes';
-import RightArrow from '../subComponents/RightArrow';
 
 // Framer Motion
 import { motion } from 'framer-motion';
@@ -17,20 +17,51 @@ import ParticlesComponent from '../subComponents/ParticlesComponent';
 import LogoComp from '../subComponents/LogoComp';
 import HomeButton from '../subComponents/HomeButton';
 
-import Mac from '../subComponents/Mac';
+import Macbook from '../subComponents/Macbook';
 import Plane from '../subComponents/Plane';
 
+import RightArrow from '../subComponents/RightArrow';
+
 const MainContainer = styled(motion.div)`
-  background-color: #000000;
+  background-color: #030303;
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 
   canvas {
-      margin-top: 5vh;
+      overflow: hidden;
+      margin-top: 0vh;
       height: 250px;
   }
+
+  @media screen and (max-width: 500px) {
+
+  }
+`
+
+const CommentTitle = styled.h1`
+    position: fixed;
+    top: 1rem;
+    left: 5rem;
+    font-size: 6rem;
+    opacity: 0.7;
+    color: #fff;
+
+    >span {
+        font-size: 12.5rem;
+    }
+
+    @media screen and (max-width: 500px) {
+        top: 5rem;
+        left: 4rem;
+        font-size: 2rem;
+        opacity: 0.7;
+
+        >span {
+            font-size: 4rem;
+        }
+    }
 `
 
 const About = () => {
@@ -42,10 +73,11 @@ const About = () => {
 
     const handleClick = () => setClick(!click);
 
+    console.log(handleClick);
+
     const moveX = {
         x: `${path === "games" ? "-100%" : null}`,
     };
-
 
     return (
         <Suspense fallback={null}>
@@ -61,6 +93,10 @@ const About = () => {
                     <LogoComp theme='dark' />
                     <HomeButton />
 
+                    <CommentTitle>
+                        <span>A</span>bout Me
+                    </CommentTitle>
+
                     <NavLink
                         to="/about-games"
                         click={click}
@@ -73,9 +109,9 @@ const About = () => {
 
                     <Canvas>
                         <OrbitControls enableZoom={false} />
-                        <ambientLight intensity={2} />
-                        <directionalLight position={[-2, 5, 2]} intensity={1} />
-                        <Mac />
+                        <ambientLight intensity={5} />
+                        <directionalLight position={[-5, 15, 5, 5, -5]} intensity={1} />
+                        <Macbook className="macbook" scale={6.75} />
                     </Canvas>
 
                     <Plane />
