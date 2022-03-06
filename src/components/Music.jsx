@@ -76,6 +76,7 @@ const CommentTitle = styled.h1`
     >p {
       color: #fff;
       font-size: 1rem;
+      margin-left: 1.5rem;
     }
 
     @media screen and (max-width: 500px) {

@@ -115,10 +115,10 @@ const Form = styled.div`
 const Flex = styled.div`
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 7rem;
-    max-width: 50%;
-    /* left: 50%;
-    transform: translate(-100%, 0); */
+    max-width: 100%;
     position: relative;
 
     >div {
@@ -131,68 +131,11 @@ const Flex = styled.div`
         transition: all 0.25s forwards;
         cursor: pointer;
         /* position: absolute; */
-            &:before,&:after {
-                position: absolute;
-            }
-
-            &:before {
-                font-family: "Font Awesome 5 Free"; 
-                font-weight: 900;
-	            content: "\f10d";
-                color: #000;
-                font-size: 2.5rem;
-                margin-top: 15rem;
-                margin-left: 26rem;
-                transform: rotate(180deg);
-            }
-
-            &:after {
-                font-family: "Font Awesome 5 Free"; 
-                font-weight: 900;
-                content: '\f10d';
-                color: #000;
-                font-size: 2.5rem;
-                margin-top: -9rem;
-                margin-left: -3.5rem;
-            }
-        
     }
 
     >div>li {
         list-style: none;
         padding: 1rem;
-    }
-
-    @media screen and (max-width: 768px) {
-        >div {
-
-            &:before {
-                margin-top: 16.5rem;
-                margin-left: 24rem;
-                transform: rotate(180deg);
-            }
-
-            &:after {
-                right: 100%;
-                margin-top: -10rem;
-            }
-        }
-    }
-
-    @media screen and (max-width: 820px) {
-        >div {
-            &:before {
-                margin-top: 18rem;
-            }
-        }
-    }
-
-    @media screen and (max-width: 768px) {
-        >div {
-            &:before {
-                margin-top: 16rem;
-            }
-        }
     }
 
     @media screen and (max-width: 500px) {
@@ -201,55 +144,18 @@ const Flex = styled.div`
 
         >div {
             height: 25vh;
-
-            &:before {
-                font-size: 2rem;
-                margin-top: 12rem;
-                margin-left: 14.5rem;
-                transform: rotate(180deg);
-            }
-
-            &:after {
-                font-size: 2rem;
-                right: 92.5%;
-                margin-top: -10rem;
-            }
-        }
-    }
-
-    @media screen and (max-width: 414px) {
-        >div {
-
-            &:before {
-                margin-top: 15rem;
-                margin-left: 16rem;
-            }
-        }
-    }
-
-    @media screen and (max-width: 393px) {
-        >div {
-
-            &:before {
-                margin-top: 14rem;
-                margin-left: 15rem;
-            }
-        }
-    }
-
-    @media screen and (max-width: 360px) {
-        >div {
-
-            &:before {
-                margin-top: 12.5rem;
-                margin-left: 14rem;
-            }
         }
     }
 `
 
 const Details = styled.div`
+    >div {
+        text-align: center;
+    }
 
+    >div>span {
+        font-size: 1.25rem;
+    }
 `
 
 
@@ -378,18 +284,17 @@ const Comments = () => {
                                     >
                                         <Details>
                                             <div>
-                                                <p>
-                                                    Name: &nbsp;
+                                                <h1>
                                                     <strong>{value.attributes.name}</strong>
-                                                </p>
-                                                <p>
-                                                    Title: &nbsp;
+                                                </h1>
+                                                <br /><br />
+                                                <h2>
                                                     <strong>{value.attributes.title}</strong>
-                                                </p>
-                                                <p>
-                                                    Feedback: &nbsp;
-                                                    <strong>{value.attributes.feedback}</strong>
-                                                </p>
+                                                </h2>
+                                                <br /><br />
+                                                <span>
+                                                    <i>"{value.attributes.feedback}"</i>
+                                                </span>
                                             </div>
                                         </Details>
                                         {/* <button status={'Delete'} onClick={(e) => handleDelete(e, value.id)}>Delete Comment</button> */}
