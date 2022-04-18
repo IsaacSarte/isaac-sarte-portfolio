@@ -19,8 +19,6 @@ import HomeButton from '../subComponents/HomeButton';
 
 import LeftArrow from '../subComponents/LeftArrow';
 
-import Plane from '../subComponents/Plane';
-
 const Midi = lazy(() => import('../subComponents/Midi'));
 
 const MainContainer = styled(motion.div)`
@@ -38,26 +36,47 @@ const MainContainer = styled(motion.div)`
 
     >span {
       color: #fff;
-      position: fixed;
-      bottom: 25vh;
-      margin-bottom: auto;
+      position: absolute;
+      margin: 0 auto;
       text-align: center;
       left: 50%;
       transform: translate(-50%, 0);
       font-size: 2rem;
       font-style: italic;
-  }
-
-  @media screen and (max-width: 500px) {
-    canvas {
-      overflow: hidden;
-      margin-top: -15vh;
     }
 
-    >span {
-        font-size: 1.15rem;
-        bottom: 20vh;
+    @media screen and (max-width: 768px) {
+        canvas {
+            overflow: hidden;
+            margin-top: 5vh;
+        }
+
+        >span {
+            margin-top: 5rem;
+            font-size: 1.15rem;
+            bottom: 0vh;
+        }
     }
+
+    @media screen and (max-width: 639px) {
+        canvas {
+            overflow: hidden;
+            margin-top: 0vh;
+        }
+
+        >span {
+            margin-top: 5rem;
+            font-size: 1.10rem;
+            bottom: 0vh;
+        }
+    }
+
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        >span {
+            font-size: 1.5rem;
+        }
+    }
+
   }
 `
 
@@ -79,7 +98,17 @@ const CommentTitle = styled.h1`
       margin-left: 1.5rem;
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 768px) {
+        top: 7.5rem;
+        font-size: 4rem;
+        opacity: 0.7;
+
+        >span {
+            font-size: 4rem;
+        }
+    }
+
+    @media screen and (max-width: 639px) {
         top: 5.5rem;
         left: 4rem;
         font-size: 2rem;
@@ -87,6 +116,17 @@ const CommentTitle = styled.h1`
 
         >span {
             font-size: 4rem;
+        }
+    }
+
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        top: 5.5rem;
+        left: 7rem;
+        font-size: 5rem;
+        opacity: 0.7;
+
+        >span {
+            font-size: 7.5rem;
         }
     }
 `
@@ -134,6 +174,13 @@ const Music = () => {
 
                     <ParticlesComponent theme='dark' />
 
+                    <Canvas>
+                        <OrbitControls enableZoom={false} />
+                        <ambientLight intensity={2} />
+                        <directionalLight position={[-2, 5, 2]} intensity={1} />
+                        <Midi scale={0.5} />
+                    </Canvas>
+
                     <motion.span
                         initial={{ opacity: 0, bottom: '15vh' }}
                         animate={{ opacity: 1, bottom: '20vh' }}
@@ -143,15 +190,6 @@ const Music = () => {
                         I enjoy playing piano, guitar, especially in <br />
                         making chill beats or lo-fi."
                     </motion.span>
-
-                    <Canvas>
-                        <OrbitControls enableZoom={false} />
-                        <ambientLight intensity={2} />
-                        <directionalLight position={[-2, 5, 2]} intensity={1} />
-                        <Midi scale={0.75} />
-                    </Canvas>
-
-                    <Plane />
 
                 </MainContainer>
             </ThemeProvider>

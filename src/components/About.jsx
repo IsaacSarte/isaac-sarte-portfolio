@@ -20,7 +20,6 @@ import HomeButton from '../subComponents/HomeButton';
 
 import RightArrow from '../subComponents/RightArrow';
 
-import Plane from '../subComponents/Plane';
 
 const Macbook = lazy(() => import('../subComponents/Macbook'));
 
@@ -39,25 +38,44 @@ const MainContainer = styled(motion.div)`
 
   >span {
       color: #fff;
-      position: fixed;
-      bottom: 25vh;
-      margin-bottom: auto;
+      position: absolute;
+      margin: 0 auto;
       text-align: center;
       left: 50%;
       transform: translate(-50%, 0);
       font-size: 2rem;
       font-style: italic;
-  }
+    }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 768px) {
     canvas {
         overflow: hidden;
-        margin-top: -5vh;
+        margin-top: 5vh;
     }
 
     >span {
+        margin-top: 5rem;
         font-size: 1.15rem;
-        bottom: 30vh;
+        bottom: 0vh;
+    }
+  }
+
+  @media screen and (max-width: 639px) {
+    canvas {
+        overflow: hidden;
+        margin-top: 0vh;
+    }
+
+    >span {
+        margin-top: 5rem;
+        font-size: 1.10rem;
+        bottom: 0vh;
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1440px) {
+    >span {
+        font-size: 1.5rem;
     }
   }
 `
@@ -79,7 +97,7 @@ const CommentTitle = styled.h1`
       font-size: 1rem;
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 639px) {
         top: 5.5rem;
         left: 4rem;
         font-size: 2rem;
@@ -87,6 +105,17 @@ const CommentTitle = styled.h1`
 
         >span {
             font-size: 4rem;
+        }
+    }
+
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        top: 5.5rem;
+        left: 7rem;
+        font-size: 5rem;
+        opacity: 0.7;
+
+        >span {
+            font-size: 7.5rem;
         }
     }
 `
@@ -135,7 +164,15 @@ const About = () => {
 
                     <ParticlesComponent theme='dark' />
 
+                    <Canvas className="mt-4 mb-4">
+                        <OrbitControls enableZoom={false} />
+                        <ambientLight intensity={5} />
+                        <directionalLight position={[-5, 15, 5, 5, -5]} intensity={1} />
+                        <Macbook className="macbook" scale={6} />
+                    </Canvas>
+
                     <motion.span
+                        className="sm:text-sm md:text-sm"
                         initial={{ opacity: 0, bottom: '15vh' }}
                         animate={{ opacity: 1, bottom: '20vh' }}
                         transition={{ type: 'spring', duration: 1.25, delay: 1 }}
@@ -144,15 +181,6 @@ const About = () => {
                         for every well defined specific problems using my knowledge in the <br />
                         Web Development Industry."
                     </motion.span>
-
-                    <Canvas>
-                        <OrbitControls enableZoom={false} />
-                        <ambientLight intensity={5} />
-                        <directionalLight position={[-5, 15, 5, 5, -5]} intensity={1} />
-                        <Macbook className="macbook" scale={6} />
-                    </Canvas>
-
-                    <Plane />
 
                 </MainContainer>
             </ThemeProvider>
